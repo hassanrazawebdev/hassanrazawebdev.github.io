@@ -7,7 +7,7 @@ end to end. Eight production sites so far across crypto, iGaming, music, ecommer
 
 ## Why this repository looks the way it does
 
-The site is one `index.html` file. That is deliberate, and it is part of what I am showing.
+The site is one `index.html` file plus a folder of screenshots. That is deliberate, and it is part of what I am showing.
 
 - **No framework.** Nothing to install, nothing to update, nothing that ships 90KB to render a page of text.
 - **No web fonts.** System font stack, so the page needs exactly one network request: itself.
@@ -27,6 +27,7 @@ by anyone reviewing it.
 | Motion | `IntersectionObserver` reveal, added only after the browser confirms support, and fully disabled under `prefers-reduced-motion` |
 | Accessibility | Skip link, visible `:focus-visible` rings, semantic landmarks, real heading order, card links that expand to the whole card without nesting interactive elements |
 | SEO | Canonical URL, Open Graph tags, and `Person` JSON-LD |
+| Images | Real screenshots of every site, sized to 1200px wide and served as progressive JPEG. Below-the-fold images are `loading="lazy"`, the lead image is preloaded with `fetchpriority="high"` |
 | Assets | Favicon is an inline SVG data URI, so there is no extra file and no extra request |
 
 ## Run it
