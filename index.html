@@ -98,7 +98,7 @@ p { margin: 0; }
 
 .hero { padding-block: clamp(3.5rem, 9vw, 6rem) clamp(3rem, 7vw, 5rem); }
 @media (min-width: 900px) {
-  .hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: end; }
+  .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: end; }
 }
 
 .avail {
@@ -109,7 +109,7 @@ p { margin: 0; }
 }
 .avail i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(61,220,132,.16); }
 
-h1 { font-size: clamp(2.6rem, 1.1rem + 6.2vw, 5.75rem); }
+h1 { font-size: clamp(2.4rem, 1rem + 5vw, 4.5rem); }
 h1 .g { color: var(--accent); }
 
 .hero-sub { font-size: clamp(1.05rem, 1rem + .4vw, 1.3rem); color: var(--ink-2); margin-top: 1.5rem; max-width: 46ch; }
@@ -178,6 +178,7 @@ section { padding-block: clamp(3.5rem, 9vw, 7rem); }
 
 .card { display: flex; flex-direction: column; }
 .card .shot { margin-bottom: 1.1rem; }
+.card .shot img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
 .card h3 { font-size: 1.15rem; margin-top: .45rem; }
 .card h3 a { color: var(--ink); text-decoration: none; }
 .card:hover h3 a { color: var(--accent); }
@@ -304,7 +305,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
           <a class="shot" href="https://musicclippingagency.com/" rel="noopener" aria-label="Visit Music Clipping Agency">
             <img src="img/music.jpg" width="1200" height="506" alt="Music Clipping Agency homepage with green audio artwork behind large display type." loading="lazy">
           </a>
-          <p class="sector">Music &nbsp;/&nbsp; musicclippingagency.com</p>
+          <p class="sector">musicclippingagency.com</p>
           <h3><a href="https://musicclippingagency.com/" rel="noopener">Music Clipping Agency</a></h3>
           <p>The most build heavy of the agency sites: animated data blocks, a campaign results bubble chart and a clip cohort diagram, all holding their shape down to small phones.</p>
           <ul class="tags"><li>Data visuals</li><li>Scroll animation</li><li>Elementor</li></ul>
@@ -314,7 +315,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
           <a class="shot" href="https://cryptoclippers.com/" rel="noopener" aria-label="Visit Crypto Clippers">
             <img src="img/cryptoclippers.jpg" width="1200" height="506" alt="Crypto Clippers homepage with platform icons set inside the headline." loading="lazy">
           </a>
-          <p class="sector">Crypto &nbsp;/&nbsp; cryptoclippers.com</p>
+          <p class="sector">cryptoclippers.com</p>
           <h3><a href="https://cryptoclippers.com/" rel="noopener">Crypto Clippers</a></h3>
           <p>A siloed page matrix instead of one long page: six vertical pages and five platform pages, each with its own modules, all routing into a single booking funnel.</p>
           <ul class="tags"><li>Information architecture</li><li>Component reuse</li><li>WordPress</li></ul>
@@ -324,7 +325,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
           <a class="shot" href="https://casinoclippingagency.com/" rel="noopener" aria-label="Visit Casino Clipping Agency">
             <img src="img/casinoclipping.jpg" width="1200" height="507" alt="Casino Clipping Agency homepage with gold chips and a green gradient hero." loading="lazy">
           </a>
-          <p class="sector">iGaming &nbsp;/&nbsp; casinoclippingagency.com</p>
+          <p class="sector">casinoclippingagency.com</p>
           <h3><a href="https://casinoclippingagency.com/" rel="noopener">Casino Clipping Agency</a></h3>
           <p>Live metrics block, comparison pages and one booking funnel, built inside iGaming compliance limits where what the copy may claim shapes the layout as much as the design does.</p>
           <ul class="tags"><li>Conversion modules</li><li>Compliance constraints</li><li>Scoped CSS</li></ul>
@@ -334,7 +335,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
           <a class="shot" href="https://buildcalcpro.online/" rel="noopener" aria-label="Visit BuildCalc Pro">
             <img src="img/buildcalc.jpg" width="1200" height="322" alt="BuildCalc Pro with a worked example chip and category pills for concrete, gravel, mulch and tile." loading="lazy">
           </a>
-          <p class="sector">Construction &nbsp;/&nbsp; buildcalcpro.online</p>
+          <p class="sector">buildcalcpro.online</p>
           <h3><a href="https://buildcalcpro.online/" rel="noopener">BuildCalc Pro</a></h3>
           <p>Fifteen material calculators. Waste factor and regional rates are inputs you can see and change, not constants buried in the code, so the estimate can be argued with.</p>
           <ul class="tags"><li>JavaScript</li><li>Unit conversion</li><li>WordPress</li></ul>
@@ -344,7 +345,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
           <a class="shot" href="https://cryptougc.co/" rel="noopener" aria-label="Visit Crypto UGC">
             <img src="img/cryptougc.jpg" width="1200" height="507" alt="Crypto UGC homepage with a green and white split headline over a dark starfield." loading="lazy">
           </a>
-          <p class="sector">Web3 &nbsp;/&nbsp; cryptougc.co</p>
+          <p class="sector">cryptougc.co</p>
           <h3><a href="https://cryptougc.co/" rel="noopener">Crypto UGC</a></h3>
           <p>A custom classed hero built on hand written CSS inside Elementor, so the section behaves like code rather than a stack of builder widgets.</p>
           <ul class="tags"><li>Hand-written CSS</li><li>Elementor</li><li>Carousels</li></ul>
@@ -354,7 +355,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
           <a class="shot" href="https://ecomugc.co/" rel="noopener" aria-label="Visit Ecom UGC">
             <img src="img/ecomugc.jpg" width="1200" height="506" alt="Ecommerce UGC Agency homepage with a rating chip and two call to action buttons." loading="lazy">
           </a>
-          <p class="sector">Ecommerce &nbsp;/&nbsp; ecomugc.co</p>
+          <p class="sector">ecomugc.co</p>
           <h3><a href="https://ecomugc.co/" rel="noopener">Ecom UGC</a></h3>
           <p>Client logo bar, ratings block and a dual conversion path: a booking widget for people ready to talk, a contact form for people who are not there yet.</p>
           <ul class="tags"><li>Lead capture</li><li>Social proof</li><li>Figma</li></ul>
