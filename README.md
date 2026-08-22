@@ -34,8 +34,8 @@ by anyone reviewing it.
 There is no toolchain. Clone it and open the file.
 
 ```bash
-git clone https://github.com/hassanrazawebdev/portfolio.git
-cd portfolio
+git clone https://github.com/hassanrazawebdev/hassanrazawebdev.github.io.git
+cd hassanrazawebdev.github.io
 open index.html          # macOS
 # or: start index.html   # Windows
 # or serve it: python3 -m http.server 8000

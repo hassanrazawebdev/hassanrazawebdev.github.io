@@ -167,7 +167,7 @@ h1 { font-size: clamp(2.25rem, 1.4rem + 4vw, 4rem); font-weight: 650; }
 
 .facts {
   display: grid; gap: 1px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   background: var(--line);
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -180,7 +180,7 @@ h1 { font-size: clamp(2.25rem, 1.4rem + 4vw, 4rem); font-weight: 650; }
 
 /* ---------- Work ---------- */
 
-.grid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.grid { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
 
 .card {
   position: relative;
@@ -229,7 +229,7 @@ h1 { font-size: clamp(2.25rem, 1.4rem + 4vw, 4rem); font-weight: 650; }
 
 /* ---------- Stack ---------- */
 
-.stack { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.stack { display: grid; gap: var(--gap); grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
 .stack h3 { font-family: var(--mono); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--text-faint); margin-bottom: .85rem; }
 .stack ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
 .stack li { font-size: .875rem; color: var(--text-dim); border: 1px solid var(--line); border-radius: 5px; padding: .35rem .7rem; background: var(--bg-raised); }
@@ -245,9 +245,13 @@ footer {
   display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; justify-content: space-between;
 }
 
-/* ---------- Reveal on scroll (progressive: hidden only once JS confirms support) ---------- */
-.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-.js .reveal.in { opacity: 1; transform: none; }
+/* ---------- Reveal on scroll ----------
+   Content is visible by default and the reveal is an animation, not a hidden
+   state that JS has to undo. If the observer never fires, if the script fails,
+   if the tab is backgrounded and transitions are throttled, the page still
+   reads. Nothing here is load bearing. */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.js .reveal.in { animation: rise .5s ease both; }
 </style>
 </head>
 
@@ -502,7 +506,7 @@ footer {
 </div>
 
 <script>
-// Progressive enhancement: only hide-then-reveal if the browser can observe.
+// Progressive enhancement: the reveal is added, never depended on.
 (function () {
   if (!('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js');
@@ -513,14 +517,7 @@ footer {
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
 
-  var targets = document.querySelectorAll('.reveal');
-  targets.forEach(function (el) { io.observe(el); });
-
-  // Safety net: if anything is still hidden after 2s, show it.
-  // Content must never depend on an animation firing.
-  setTimeout(function () {
-    targets.forEach(function (el) { el.classList.add('in'); });
-  }, 2000);
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
 })();
 </script>
 
