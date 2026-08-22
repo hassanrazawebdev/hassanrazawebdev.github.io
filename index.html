@@ -272,8 +272,9 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
   body { font-size: 1rem; }
   section { padding-block: 3rem; }
 
-  /* Give the headline room to breathe instead of letting the forced break
-     make three short lines on a narrow screen. */
+  /* Let the headline wrap naturally rather than keeping a desktop line break
+     that makes three short lines on a phone. The space before the <br> in the
+     markup is what keeps the words apart once the break is switched off. */
   h1 { font-size: clamp(2.1rem, 8.5vw, 2.9rem); }
   h1 br { display: none; }
 
@@ -317,7 +318,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
   <header class="hero">
     <div class="stagger">
       <div class="avail"><i aria-hidden="true"></i> Available for remote work</div>
-      <h1>I design the site,<br>then I <span class="g">build it.</span></h1>
+      <h1>I design the site, <br>then I <span class="g">build it.</span></h1>
       <p class="hero-sub">
         <b>Hassan Raza</b>, web designer and developer in Lahore, working worldwide.
         Figma layout to live WordPress build, on my own, end to end.
