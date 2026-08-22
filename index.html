@@ -13,11 +13,11 @@
 <meta property="og:title" content="Hassan Raza | Web Designer &amp; Developer">
 <meta property="og:description" content="Eight production sites, designed and built end to end.">
 <meta property="og:url" content="https://hassanrazawebdev.github.io/">
-<meta property="og:image" content="https://hassanrazawebdev.github.io/img/casinougc.jpg">
+<meta property="og:image" content="https://hassanrazawebdev.github.io/img/cryptoclippers.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" as="image" href="img/casinougc.jpg" fetchpriority="high">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2307090b'/><text y='.92em' x='50%25' text-anchor='middle' font-size='68' font-weight='700' font-family='system-ui,sans-serif' fill='%233ddc84'>H</text></svg>">
+<link rel="preload" as="image" href="img/cryptoclippers.webp" imagesrcset="img/cryptoclippers-640.webp 640w, img/cryptoclippers.webp 1200w" imagesizes="(max-width: 900px) 92vw, 46vw" fetchpriority="high">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2307090b'/><text y='.92em' x='50%25' text-anchor='middle' font-size='68' font-weight='700' font-family='system-ui,sans-serif' fill='%234c9dff'>H</text></svg>">
 
 <script type="application/ld+json">
 {
@@ -47,8 +47,8 @@
   --ink:        #f1f5f3;
   --ink-2:      #98a5a3;
   --ink-3:      #6a7674;
-  --accent:     #3ddc84;
-  --accent-dim: #1d4a33;
+  --accent:     #4c9dff;
+  --accent-dim: #1e3f66;
 
   --r: 14px;
   --pad: clamp(1.25rem, 5vw, 4rem);
@@ -73,17 +73,17 @@ body {
 /* One soft wash behind the fold. The only decoration on the page. */
 .glow {
   position: fixed; inset: -20% -10% auto -10%; height: 70vh; z-index: 0; pointer-events: none;
-  background: radial-gradient(60% 55% at 50% 0%, rgba(61,220,132,.10), transparent 70%);
+  background: radial-gradient(60% 55% at 50% 0%, rgba(76,157,255,.11), transparent 70%);
 }
 
 .wrap { position: relative; z-index: 1; max-width: 1240px; margin-inline: auto; padding-inline: var(--pad); }
 
 a { color: var(--accent); text-underline-offset: 3px; }
-a:hover { color: #7df0ad; }
+a:hover { color: #8dc2ff; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 img { display: block; max-width: 100%; height: auto; }
 
-.skip { position: absolute; left: -9999px; background: var(--accent); color: #04140b; padding: .7rem 1.1rem; font-weight: 700; border-radius: 0 0 var(--r) 0; }
+.skip { position: absolute; left: -9999px; background: var(--accent); color: #04101d; padding: .7rem 1.1rem; font-weight: 700; border-radius: 0 0 var(--r) 0; }
 .skip:focus { left: 0; top: 0; z-index: 60; }
 
 h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -.03em; font-weight: 800; text-wrap: balance; }
@@ -107,7 +107,7 @@ p { margin: 0; }
   color: var(--ink-2); border: 1px solid var(--line-lift); border-radius: 999px; padding: .45rem .9rem;
   margin-bottom: 1.75rem;
 }
-.avail i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(61,220,132,.16); }
+.avail i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(76,157,255,.20); }
 
 h1 { font-size: clamp(2.4rem, 1rem + 5vw, 4.5rem); }
 h1 .g { color: var(--accent); }
@@ -124,15 +124,46 @@ h1 .g { color: var(--accent); }
 }
 .btn:hover { border-color: var(--accent-dim); background: var(--bg-lift); color: var(--ink); transform: translateY(-2px); }
 .btn:active { transform: translateY(0) scale(.985); }
-.btn.solid { background: var(--accent); border-color: var(--accent); color: #04140b; }
-.btn.solid:hover { background: #63e79d; border-color: #63e79d; color: #04140b; }
+.btn.solid { background: var(--accent); border-color: var(--accent); color: #04101d; }
+.btn.solid:hover { background: #77b4ff; border-color: #77b4ff; color: #04101d; }
 
-/* Numbers: hairline rows, no cards */
-.counts { margin-top: 2.5rem; border-top: 1px solid var(--line); }
+/* Numbers: a compact spec block. Hairlines instead of cards, and the
+   label sits next to its number rather than across a gap from it. */
+.counts { margin-top: 2.5rem; }
 @media (min-width: 900px) { .counts { margin-top: 0; } }
-.counts div { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
-.counts b { font-family: var(--mono); font-size: clamp(1.5rem, 1.2rem + 1vw, 2.1rem); font-weight: 700; letter-spacing: -.04em; }
-.counts span { font-size: .85rem; color: var(--ink-3); text-align: right; line-height: 1.45; }
+
+.stat {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(3.5rem, auto) 1fr;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid var(--line);
+}
+.stat:last-child { border-bottom: 1px solid var(--line); }
+
+/* A short accent segment marks the top of each row. It draws in on reveal,
+   which is what gives the block its rhythm. */
+.stat::before {
+  content: "";
+  position: absolute; top: -1px; left: 0;
+  width: 1.75rem; height: 1px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s cubic-bezier(.16,1,.3,1);
+}
+.js .counts.in .stat::before { transform: scaleX(1); }
+.js .counts.in .stat:nth-child(2)::before { transition-delay: .09s; }
+.js .counts.in .stat:nth-child(3)::before { transition-delay: .18s; }
+
+.stat b {
+  font-family: var(--mono);
+  font-size: clamp(1.9rem, 1.5rem + 1.3vw, 2.7rem);
+  font-weight: 700; letter-spacing: -.05em; line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.stat span { font-size: .875rem; color: var(--ink-3); line-height: 1.5; transition: color .25s ease; }
+.stat:hover span { color: var(--ink-2); }
 
 /* ---------------- Sections ---------------- */
 
@@ -212,10 +243,63 @@ section { padding-block: clamp(3.5rem, 9vw, 7rem); }
 footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-family: var(--mono); font-size: .72rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: .6rem 2rem; justify-content: space-between; }
 
 /* ---------------- Motion ----------------
-   Additive only. Content is visible by default and the animation
-   arrives on top of it. If the script never runs, nothing is hidden. */
-@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-.js .rv.in { animation: rise .55s cubic-bezier(.16,1,.3,1) both; }
+   Additive only. Nothing on this page is hidden by default: the hidden
+   state lives inside the keyframes, never in a base rule. If the script
+   fails, if the observer never fires, if the tab is backgrounded and
+   animations are throttled, the page still reads in full. */
+
+@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
+.js .rv.in            { animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
+.js .stagger.in > *   { animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
+
+/* Sequence, so a group arrives as a group instead of all at once. */
+.js .stagger.in > *:nth-child(1) { animation-delay: 0s;    }
+.js .stagger.in > *:nth-child(2) { animation-delay: .07s;  }
+.js .stagger.in > *:nth-child(3) { animation-delay: .14s;  }
+.js .stagger.in > *:nth-child(4) { animation-delay: .21s;  }
+.js .stagger.in > *:nth-child(5) { animation-delay: .28s;  }
+.js .stagger.in > *:nth-child(6) { animation-delay: .35s;  }
+
+/* Feature blocks: image and text land a beat apart. */
+.js .feature.in > *:nth-child(2) { animation: rise .6s cubic-bezier(.16,1,.3,1) .1s both; }
+
+/* ---------------- Small screens ----------------
+   The layout already collapses through clamp() and auto-fill. These are the
+   places where a straight collapse is not enough. */
+
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  section { padding-block: 3rem; }
+
+  /* Give the headline room to breathe instead of letting the forced break
+     make three short lines on a narrow screen. */
+  h1 { font-size: clamp(2.1rem, 8.5vw, 2.9rem); }
+  h1 br { display: none; }
+
+  .hero { padding-block: 2.5rem 2.5rem; }
+  .hero-sub { font-size: 1.02rem; }
+
+  /* Full width taps, comfortably above the 44px target. */
+  .cta { gap: .6rem; }
+  .btn { flex: 1 1 auto; justify-content: center; padding: .85rem 1.1rem; }
+
+  .stat { grid-template-columns: minmax(2.75rem, auto) 1fr; gap: .9rem; padding: .95rem 0; }
+  .stat b { font-size: 2rem; }
+  .stat span { font-size: .82rem; }
+
+  .feature { gap: 1.25rem; margin-top: 2rem; }
+  .grid { gap: 2rem; }
+  .tags li { font-size: .68rem; }
+
+  footer { padding-block: 1.5rem 2.5rem; }
+}
+
+/* Between phone and laptop the work grid reads better as one column than as
+   two cramped ones. */
+@media (min-width: 641px) and (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -231,7 +315,7 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
 <div class="wrap">
 
   <header class="hero">
-    <div>
+    <div class="stagger">
       <div class="avail"><i aria-hidden="true"></i> Available for remote work</div>
       <h1>I design the site,<br>then I <span class="g">build it.</span></h1>
       <p class="hero-sub">
@@ -245,85 +329,100 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
       </div>
     </div>
 
-    <div class="counts">
-      <div><b>8</b><span>production sites,<br>designed and built</span></div>
-      <div><b>26</b><span>client-side calculators<br>across two platforms</span></div>
-      <div><b>2+</b><span>years doing design<br>and build together</span></div>
+    <div class="counts rv">
+      <div class="stat"><b data-count="8">8</b><span>production sites, designed and built</span></div>
+      <div class="stat"><b data-count="26">26</b><span>client-side calculators across two platforms</span></div>
+      <div class="stat"><b data-count="2" data-suffix="+">2+</b><span>years doing design and build together</span></div>
     </div>
   </header>
 
   <main id="work">
 
     <section class="rule">
-      <p class="eyebrow">Selected work</p>
-      <h2 class="h2">Every site below is live, and I designed and built all of it.</h2>
-      <p class="lede">
+      <p class="eyebrow rv">Selected work</p>
+      <h2 class="h2 rv">Every site below is live, and I designed and built all of it.</h2>
+      <p class="lede rv">
         No mockups, no team credits to untangle. Layout in Figma, build in WordPress with hand written
         scoped CSS, and real code wherever the page builder could not do the job.
       </p>
 
       <article class="feature rv">
-        <a class="shot" href="https://casinougc.com/" rel="noopener" aria-label="Visit Casino UGC">
-          <img src="img/casinougc.jpg" width="1200" height="506" alt="Casino UGC homepage: a dark green hero reading Guaranteed Views For Casino and iGaming Brands." fetchpriority="high">
+        <a class="shot" href="https://cryptoclippers.com/" rel="noopener" aria-label="Visit Crypto Clippers">
+          <picture>
+            <source type="image/webp" srcset="img/cryptoclippers-640.webp 640w, img/cryptoclippers.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/cryptoclippers.jpg" width="1200" height="506" alt="Crypto Clippers homepage with platform icons set inside the headline over a dark green hero." fetchpriority="high">
+          </picture>
         </a>
         <div>
-          <p class="sector">iGaming &nbsp;/&nbsp; casinougc.com</p>
-          <h3><a href="https://casinougc.com/" rel="noopener">Casino UGC</a></h3>
+          <p class="sector">Crypto &nbsp;/&nbsp; cryptoclippers.com</p>
+          <h3><a href="https://cryptoclippers.com/" rel="noopener">Crypto Clippers</a></h3>
           <p>
-            The homepage needed a layout Elementor could not produce: nested structure, a three way
-            comparison table that had to reflow properly on mobile, and interactions the widget set does
-            not expose. <b>I wrote a custom WordPress plugin for that front end</b> rather than bending the
-            design to fit the tool. Clean markup, scoped CSS, and a page that changes in one file instead
-            of fifteen nested containers.
+            One long page would have buried every vertical under the same pitch. <b>I built a siloed page
+            matrix instead</b>: six vertical pages for token launch, DeFi and the rest, five platform pages
+            for TikTok, Reels, Shorts, X and Kick, each with its own case study and FAQ modules, all
+            routing into a single booking funnel. Adding a new vertical means adding a page, not
+            rewriting the site.
           </p>
-          <ul class="tags"><li>Custom WP plugin</li><li>PHP</li><li>Scoped CSS</li><li>Comparison table</li><li>Figma</li></ul>
-          <a class="go" href="https://casinougc.com/" rel="noopener">Visit the site &rsaquo;</a>
+          <ul class="tags"><li>Information architecture</li><li>Component reuse</li><li>Scoped CSS</li><li>Booking funnel</li><li>Figma</li></ul>
+          <a class="go" href="https://cryptoclippers.com/" rel="noopener">Visit the site &rsaquo;</a>
         </div>
       </article>
 
       <article class="feature flip rv">
-        <a class="shot" href="https://electricalcalcs.online/" rel="noopener" aria-label="Visit ElectriCalcs">
-          <img src="img/electricalcalcs.jpg" width="1200" height="506" alt="ElectriCalcs homepage with a live voltage drop chart reading 19 feet and 0.3 percent." loading="lazy">
+        <a class="shot" href="https://musicclippingagency.com/" rel="noopener" aria-label="Visit Music Clipping Agency">
+          <picture>
+            <source type="image/webp" srcset="img/music-640.webp 640w, img/music.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/music.jpg" width="1200" height="506" alt="Music Clipping Agency homepage with green audio artwork behind large display type." loading="lazy">
+          </picture>
         </a>
         <div>
-          <p class="sector">Tools &nbsp;/&nbsp; electricalcalcs.online</p>
-          <h3><a href="https://electricalcalcs.online/" rel="noopener">ElectriCalcs</a></h3>
+          <p class="sector">Music &nbsp;/&nbsp; musicclippingagency.com</p>
+          <h3><a href="https://musicclippingagency.com/" rel="noopener">Music Clipping Agency</a></h3>
           <p>
-            Eleven NEC referenced calculators: voltage drop, wire size, conduit fill and more.
-            <b>Every result shows the formula it used and cites the NEC article behind it</b>, because an
-            electrician has to defend the number to an inspector. The maths runs in the browser, so
-            changing one input updates the answer with no page reload.
+            The most build heavy site of the set. <b>Animated data blocks, a campaign results bubble chart
+            and a clip cohort diagram</b>, plus a three way comparison table, FAQ accordion and booking
+            funnel. The hard part was not drawing them, it was keeping every one of them readable from
+            wide desktop down to a small phone, which is where most builder charts fall apart.
           </p>
-          <ul class="tags"><li>JavaScript</li><li>Client-side maths</li><li>Input validation</li><li>Live chart</li></ul>
-          <a class="go" href="https://electricalcalcs.online/" rel="noopener">Visit the site &rsaquo;</a>
+          <ul class="tags"><li>Data visuals</li><li>Scroll animation</li><li>Responsive charts</li><li>Elementor</li><li>Scoped CSS</li></ul>
+          <a class="go" href="https://musicclippingagency.com/" rel="noopener">Visit the site &rsaquo;</a>
         </div>
       </article>
 
-      <div class="grid rv">
+      <div class="grid stagger">
 
         <article class="card">
-          <a class="shot" href="https://musicclippingagency.com/" rel="noopener" aria-label="Visit Music Clipping Agency">
-            <img src="img/music.jpg" width="1200" height="506" alt="Music Clipping Agency homepage with green audio artwork behind large display type." loading="lazy">
+          <a class="shot" href="https://casinougc.com/" rel="noopener" aria-label="Visit Casino UGC">
+            <picture>
+            <source type="image/webp" srcset="img/casinougc-640.webp 640w, img/casinougc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/casinougc.jpg" width="1200" height="506" alt="Casino UGC homepage reading Guaranteed Views For Casino and iGaming Brands." loading="lazy">
+          </picture>
           </a>
-          <p class="sector">musicclippingagency.com</p>
-          <h3><a href="https://musicclippingagency.com/" rel="noopener">Music Clipping Agency</a></h3>
-          <p>The most build heavy of the agency sites: animated data blocks, a campaign results bubble chart and a clip cohort diagram, all holding their shape down to small phones.</p>
-          <ul class="tags"><li>Data visuals</li><li>Scroll animation</li><li>Elementor</li></ul>
+          <p class="sector">casinougc.com</p>
+          <h3><a href="https://casinougc.com/" rel="noopener">Casino UGC</a></h3>
+          <p>The homepage needed a layout Elementor could not produce, so I wrote a custom WordPress plugin for that front end instead of bending the design to fit the tool.</p>
+          <ul class="tags"><li>Custom WP plugin</li><li>PHP</li><li>Comparison table</li></ul>
         </article>
 
         <article class="card">
-          <a class="shot" href="https://cryptoclippers.com/" rel="noopener" aria-label="Visit Crypto Clippers">
-            <img src="img/cryptoclippers.jpg" width="1200" height="506" alt="Crypto Clippers homepage with platform icons set inside the headline." loading="lazy">
+          <a class="shot" href="https://electricalcalcs.online/" rel="noopener" aria-label="Visit ElectriCalcs">
+            <picture>
+            <source type="image/webp" srcset="img/electricalcalcs-640.webp 640w, img/electricalcalcs.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/electricalcalcs.jpg" width="1200" height="506" alt="ElectriCalcs homepage with a live voltage drop chart reading 19 feet and 0.3 percent." loading="lazy">
+          </picture>
           </a>
-          <p class="sector">cryptoclippers.com</p>
-          <h3><a href="https://cryptoclippers.com/" rel="noopener">Crypto Clippers</a></h3>
-          <p>A siloed page matrix instead of one long page: six vertical pages and five platform pages, each with its own modules, all routing into a single booking funnel.</p>
-          <ul class="tags"><li>Information architecture</li><li>Component reuse</li><li>WordPress</li></ul>
+          <p class="sector">electricalcalcs.online</p>
+          <h3><a href="https://electricalcalcs.online/" rel="noopener">ElectriCalcs</a></h3>
+          <p>Eleven NEC referenced calculators. Every result shows the formula it used and cites the article behind it, because an electrician has to defend the number to an inspector.</p>
+          <ul class="tags"><li>JavaScript</li><li>Client-side maths</li><li>Live chart</li></ul>
         </article>
 
         <article class="card">
           <a class="shot" href="https://casinoclippingagency.com/" rel="noopener" aria-label="Visit Casino Clipping Agency">
-            <img src="img/casinoclipping.jpg" width="1200" height="507" alt="Casino Clipping Agency homepage with gold chips and a green gradient hero." loading="lazy">
+            <picture>
+            <source type="image/webp" srcset="img/casinoclipping-640.webp 640w, img/casinoclipping.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/casinoclipping.jpg" width="1200" height="507" alt="Casino Clipping Agency homepage with gold chips and a green gradient hero." loading="lazy">
+          </picture>
           </a>
           <p class="sector">casinoclippingagency.com</p>
           <h3><a href="https://casinoclippingagency.com/" rel="noopener">Casino Clipping Agency</a></h3>
@@ -333,7 +432,10 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
 
         <article class="card">
           <a class="shot" href="https://buildcalcpro.online/" rel="noopener" aria-label="Visit BuildCalc Pro">
-            <img src="img/buildcalc.jpg" width="1200" height="322" alt="BuildCalc Pro with a worked example chip and category pills for concrete, gravel, mulch and tile." loading="lazy">
+            <picture>
+            <source type="image/webp" srcset="img/buildcalc-640.webp 640w, img/buildcalc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/buildcalc.jpg" width="1200" height="322" alt="BuildCalc Pro with a worked example chip and category pills for concrete, gravel, mulch and tile." loading="lazy">
+          </picture>
           </a>
           <p class="sector">buildcalcpro.online</p>
           <h3><a href="https://buildcalcpro.online/" rel="noopener">BuildCalc Pro</a></h3>
@@ -343,7 +445,10 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
 
         <article class="card">
           <a class="shot" href="https://cryptougc.co/" rel="noopener" aria-label="Visit Crypto UGC">
-            <img src="img/cryptougc.jpg" width="1200" height="507" alt="Crypto UGC homepage with a green and white split headline over a dark starfield." loading="lazy">
+            <picture>
+            <source type="image/webp" srcset="img/cryptougc-640.webp 640w, img/cryptougc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/cryptougc.jpg" width="1200" height="507" alt="Crypto UGC homepage with a green and white split headline over a dark starfield." loading="lazy">
+          </picture>
           </a>
           <p class="sector">cryptougc.co</p>
           <h3><a href="https://cryptougc.co/" rel="noopener">Crypto UGC</a></h3>
@@ -353,7 +458,10 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
 
         <article class="card">
           <a class="shot" href="https://ecomugc.co/" rel="noopener" aria-label="Visit Ecom UGC">
-            <img src="img/ecomugc.jpg" width="1200" height="506" alt="Ecommerce UGC Agency homepage with a rating chip and two call to action buttons." loading="lazy">
+            <picture>
+            <source type="image/webp" srcset="img/ecomugc-640.webp 640w, img/ecomugc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
+            <img decoding="async" src="img/ecomugc.jpg" width="1200" height="506" alt="Ecommerce UGC Agency homepage with a rating chip and two call to action buttons." loading="lazy">
+          </picture>
           </a>
           <p class="sector">ecomugc.co</p>
           <h3><a href="https://ecomugc.co/" rel="noopener">Ecom UGC</a></h3>
@@ -365,9 +473,9 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
     </section>
 
     <section class="rule">
-      <h2 class="h2">The same four decisions on every project.</h2>
+      <h2 class="h2 rv">The same four decisions on every project.</h2>
 
-      <div class="method rv">
+      <div class="method stagger">
         <div>
           <h3>Design it before building it</h3>
           <p>Layout goes into Figma first, at real breakpoints. What goes live is what was designed, not whatever the page builder happened to allow on the day.</p>
@@ -388,9 +496,9 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
     </section>
 
     <section class="rule">
-      <h2 class="h2">What I actually work in.</h2>
+      <h2 class="h2 rv">What I actually work in.</h2>
 
-      <div class="stack rv">
+      <div class="stack stagger">
         <div>
           <h3>Design</h3>
           <p>Figma <span>/</span> Wireframing <span>/</span> Landing page design <span>/</span> Component systems <span>/</span> UI design</p>
@@ -412,9 +520,9 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
     </section>
 
     <section class="rule">
-      <p class="eyebrow">Contact</p>
-      <h2 class="close">Got a design that needs <em>building properly</em>?</h2>
-      <p class="lede">
+      <p class="eyebrow rv">Contact</p>
+      <h2 class="close rv">Got a design that needs <em>building properly</em>?</h2>
+      <p class="lede rv">
         Open to remote roles and freelance projects. If you have a WordPress site that fights you every
         time you change it, send that over too.
       </p>
@@ -441,13 +549,30 @@ footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-fam
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   document.documentElement.classList.add('js');
 
+  // Counts up to the real figure. The correct number is already in the HTML,
+  // so nothing depends on this running.
+  function countUp(el) {
+    var end = parseInt(el.dataset.count, 10);
+    if (isNaN(end)) return;
+    var suffix = el.dataset.suffix || '', dur = 750, t0 = null;
+    (function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(step);
+    })(performance.now());
+  }
+
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      e.target.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(e.target);
     });
   }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
 
-  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  document.querySelectorAll('.rv, .stagger').forEach(function (el) { io.observe(el); });
 })();
 </script>
 
