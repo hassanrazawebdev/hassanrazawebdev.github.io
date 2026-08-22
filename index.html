@@ -194,7 +194,8 @@ h1 { font-size: clamp(2.25rem, 1.4rem + 4vw, 4rem); font-weight: 650; }
 .card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 .card.feature { grid-column: 1 / -1; }
 @media (min-width: 720px) {
-  .card.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; align-items: start; padding: 1.75rem; }
+  .card.feature { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; align-items: stretch; padding: 1.75rem; }
+  .card.feature > div:last-child { justify-content: space-between; }
 }
 
 .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .5rem; }
@@ -512,7 +513,14 @@ footer {
     });
   }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
 
-  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  var targets = document.querySelectorAll('.reveal');
+  targets.forEach(function (el) { io.observe(el); });
+
+  // Safety net: if anything is still hidden after 2s, show it.
+  // Content must never depend on an animation firing.
+  setTimeout(function () {
+    targets.forEach(function (el) { el.classList.add('in'); });
+  }, 2000);
 })();
 </script>
 
