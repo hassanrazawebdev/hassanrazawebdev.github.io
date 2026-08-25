@@ -2,580 +2,501 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Hassan Raza | Web Designer &amp; Developer</title>
-<meta name="description" content="I design websites in Figma and build them myself. Eight production sites across crypto, iGaming, music, ecommerce and construction.">
-<meta name="author" content="Hassan Raza">
-<meta name="theme-color" content="#07090b">
+<meta name="description" content="Hassan Raza designs sites in Figma and builds them himself. Eight production websites and 26 client-side calculators, WordPress and Elementor with hand-written scoped CSS. Lahore, working worldwide.">
+<meta name="theme-color" content="#05070a">
 <link rel="canonical" href="https://hassanrazawebdev.github.io/">
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hassan Raza | Web Designer &amp; Developer">
-<meta property="og:description" content="Eight production sites, designed and built end to end.">
+<meta property="og:description" content="I design the site, then I build it. Eight production sites, 26 client-side calculators.">
 <meta property="og:url" content="https://hassanrazawebdev.github.io/">
 <meta property="og:image" content="https://hassanrazawebdev.github.io/img/cryptoclippers.jpg">
 <meta name="twitter:card" content="summary_large_image">
-
-<link rel="preload" as="image" href="img/cryptoclippers.webp" imagesrcset="img/cryptoclippers-640.webp 640w, img/cryptoclippers.webp 1200w" imagesizes="(max-width: 900px) 92vw, 46vw" fetchpriority="high">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2307090b'/><text y='.92em' x='50%25' text-anchor='middle' font-size='68' font-weight='700' font-family='system-ui,sans-serif' fill='%234c9dff'>H</text></svg>">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Hassan Raza",
-  "jobTitle": "Web Designer and Developer",
-  "url": "https://hassanrazawebdev.github.io/",
-  "email": "mailto:hassanraza77450@gmail.com",
-  "address": { "@type": "PostalAddress", "addressLocality": "Lahore", "addressCountry": "PK" },
-  "sameAs": ["https://www.linkedin.com/in/hassanrazawebdesigner/", "https://github.com/hassanrazawebdev"],
-  "knowsAbout": ["WordPress","Elementor","HTML","CSS","JavaScript","Figma","Responsive web design"]
-}
-</script>
-
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%2305070a'/><text y='.92em' x='50%25' text-anchor='middle' font-size='68' font-weight='700' font-family='system-ui,sans-serif' fill='%234c9dff'>H</text></svg>">
+<link rel="preload" as="image" href="img/cryptoclippers.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="img/electricalcalcs.webp" type="image/webp">
+<script>document.documentElement.className+=' js';</script>
 <style>
-/* ================================================================
-   One file. No framework, no web fonts, no build step.
-   Palette and type scale follow the sites shown in the work below.
-   ================================================================ */
+/* ============ tokens ============ */
+:root{
+  --bg:#05070a; --bg-2:#080b10; --panel:#0b1119; --panel-2:#0e151f;
+  --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+  --ink:#eef3f9; --ink-2:#b3c0d0; --ink-3:#7d8b9c;
+  --accent:#4c9dff; --accent-soft:rgba(76,157,255,.14); --accent-line:rgba(76,157,255,.35);
+  --r:14px; --r-lg:22px; --r-pill:999px;
+  --pad:clamp(20px,5vw,64px); --max:1240px;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+section[id],main[id]{scroll-margin-top:96px}
+body{
+  margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans);
+  font-size:clamp(15px,.4vw + 14px,16.5px); line-height:1.6;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img{max-width:100%; display:block; height:auto}
+a{color:inherit; text-decoration:none}
+h1,h2,h3{margin:0; line-height:1.04; letter-spacing:-.035em; font-weight:800}
+p{margin:0}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:6px}
+.wrap{width:100%; max-width:var(--max); margin-inline:auto; padding-inline:var(--pad)}
+.skip{position:absolute; left:-9999px}
+.skip:focus{left:12px; top:12px; z-index:99; background:var(--accent); color:#04070c; padding:10px 16px; border-radius:var(--r-pill); font-weight:700}
 
-:root {
-  --bg:         #07090b;
-  --bg-lift:    #0e1214;
-  --line:       #1b2226;
-  --line-lift:  #2a3439;
-  --ink:        #f1f5f3;
-  --ink-2:      #98a5a3;
-  --ink-3:      #6a7674;
-  --accent:     #4c9dff;
-  --accent-dim: #1e3f66;
+/* ============ ambient ============ */
+.glow{position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(900px 520px at 18% -8%, rgba(76,157,255,.16), transparent 62%),
+    radial-gradient(700px 460px at 92% 6%, rgba(64,214,255,.09), transparent 60%);}
+.page{position:relative; z-index:1}
 
-  --r: 14px;
-  --pad: clamp(1.25rem, 5vw, 4rem);
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+/* ============ nav ============ */
+.nav{position:sticky; top:0; z-index:40; padding:14px var(--pad) 0}
+.nav-in{
+  max-width:var(--max); margin-inline:auto; display:flex; align-items:center; gap:18px;
+  height:62px; padding:0 8px 0 18px; border:1px solid var(--line); border-radius:var(--r-pill);
+  background:rgba(8,11,16,.72); backdrop-filter:blur(14px) saturate(150%); -webkit-backdrop-filter:blur(14px) saturate(150%);
+  transition:border-color .35s var(--ease), background .35s var(--ease);
+}
+.stuck .nav-in{border-color:var(--line-2); background:rgba(8,11,16,.92)}
+.brand{display:flex; align-items:center; gap:11px; font-weight:800; letter-spacing:-.02em; white-space:nowrap}
+.mark{width:30px; height:30px; border-radius:9px; display:grid; place-items:center; flex:none;
+  background:linear-gradient(150deg,var(--accent),#2f6fd0); color:#04070c; font-weight:900; font-size:15px}
+.brand small{display:block; font-size:10px; font-weight:600; letter-spacing:.14em; color:var(--ink-3); text-transform:uppercase; line-height:1}
+.nav-links{display:flex; gap:26px; margin-left:auto; font-size:14.5px; color:var(--ink-2); font-weight:500}
+.nav-links a{position:relative; padding:6px 0; transition:color .25s var(--ease)}
+.nav-links a::after{content:""; position:absolute; left:0; right:100%; bottom:2px; height:1px; background:var(--accent); transition:right .35s var(--ease)}
+.nav-links a:hover{color:var(--ink)} .nav-links a:hover::after{right:0}
+.btn{
+  display:inline-flex; align-items:center; gap:10px; height:46px; padding:0 8px 0 22px;
+  border-radius:var(--r-pill); font-weight:700; font-size:14.5px; white-space:nowrap;
+  border:1px solid transparent; cursor:pointer;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+}
+.btn i{width:30px; height:30px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; font-size:15px}
+.btn-primary{background:var(--accent); color:#04070c; box-shadow:0 10px 30px -12px rgba(76,157,255,.75)}
+.btn-primary i{background:#04070c; color:var(--accent)}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 40px -14px rgba(76,157,255,.9)}
+.btn-primary:active{transform:translateY(0) scale(.985)}
+.btn-ghost{background:transparent; color:var(--ink); border-color:var(--line-2); padding:0 22px}
+.btn-ghost:hover{border-color:var(--accent-line); background:var(--accent-soft); transform:translateY(-2px)}
+.nav .btn{margin-left:4px}
+
+/* ============ hero ============ */
+.hero{padding-block:clamp(46px,8vw,88px) clamp(48px,7vw,80px)}
+.hero-grid{display:grid; gap:clamp(34px,4vw,52px); grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr); align-items:center}
+.pill{
+  display:inline-flex; align-items:center; gap:9px; height:34px; padding:0 15px; border-radius:var(--r-pill);
+  border:1px solid var(--accent-line); background:var(--accent-soft); color:#cfe4ff;
+  font-size:11.5px; font-weight:700; letter-spacing:.15em; text-transform:uppercase;
+}
+.dot{width:7px; height:7px; border-radius:50%; background:#4ade80; box-shadow:0 0 0 4px rgba(74,222,128,.16)}
+h1{font-size:clamp(36px,5.6vw,62px); margin:22px 0 0; text-wrap:balance}
+h1 .em{
+  display:block; font-style:italic; font-weight:700; letter-spacing:-.03em;
+  color:var(--accent); line-height:1.1; padding-bottom:.06em;
+}
+.lede{margin-top:22px; max-width:46ch; color:var(--ink-2); font-size:clamp(15.5px,.5vw + 14px,18px)}
+.cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px}
+
+/* browser frames */
+.frames{position:relative; min-height:clamp(320px,34vw,410px)}
+.frame{
+  position:absolute; width:82%; border:1px solid var(--line-2); border-radius:var(--r);
+  background:var(--panel); overflow:hidden; box-shadow:0 40px 80px -34px rgba(0,0,0,.9);
+  transition:transform .6s var(--ease);
+}
+.frame .bar{display:flex; gap:6px; align-items:center; padding:9px 12px; background:var(--panel-2); border-bottom:1px solid var(--line)}
+.frame .bar span{width:8px; height:8px; border-radius:50%; background:#2b3644}
+.frame img{aspect-ratio:628/265; object-fit:cover; object-position:top center; width:100%}
+.f1{top:6px; left:0; width:84%; transform:rotate(-4deg)}
+.f2{bottom:6px; right:0; width:74%; transform:rotate(3.5deg)}
+.frames:hover .f1{transform:rotate(-2.5deg) translateY(-6px)}
+.frames:hover .f2{transform:rotate(2deg) translateY(6px)}
+
+/* ============ stats ============ */
+.stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-2)}
+.stats-in{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,3vw,40px); padding-block:clamp(28px,4vw,42px)}
+.stat{display:flex; align-items:baseline; gap:14px}
+.stat b{font-family:var(--mono); font-size:clamp(30px,4.4vw,50px); font-weight:700; letter-spacing:-.05em; line-height:1; color:var(--ink); font-variant-numeric:tabular-nums}
+.stat span{color:var(--ink-3); font-size:13.5px; max-width:17ch; line-height:1.35}
+
+/* ============ sections ============ */
+.sec{padding-block:clamp(64px,9vw,124px)}
+.eyebrow{font-size:11.5px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--accent)}
+h2{font-size:clamp(30px,4.6vw,52px); margin-top:14px; text-wrap:balance}
+.sub{margin-top:18px; color:var(--ink-2); max-width:58ch}
+
+/* ============ work bento ============ */
+.bento{display:grid; grid-template-columns:repeat(6,1fr); gap:clamp(12px,1.6vw,20px); margin-top:clamp(34px,5vw,52px)}
+.card{
+  grid-column:span 2; position:relative; display:flex; flex-direction:column;
+  border:1px solid var(--line); border-radius:var(--r-lg); background:var(--panel); overflow:hidden;
+  transition:transform .45s var(--ease), border-color .45s var(--ease), background .45s var(--ease);
+}
+.card.big{grid-column:span 3}
+.card:hover{transform:translateY(-6px); border-color:var(--accent-line); background:var(--panel-2)}
+.shot{position:relative; overflow:hidden; background:var(--panel-2); border-bottom:1px solid var(--line)}
+.shot img{aspect-ratio:628/265; object-fit:cover; object-position:top center; width:100%; transition:transform .8s var(--ease)}
+.card:hover .shot img{transform:scale(1.045)}
+.card-body{padding:clamp(18px,2.2vw,26px); display:flex; flex-direction:column; gap:12px; flex:1}
+.kicker{font-family:var(--mono); font-size:11px; letter-spacing:.13em; text-transform:uppercase; color:var(--ink-3)}
+.card h3{font-size:clamp(19px,1.7vw,25px); letter-spacing:-.03em}
+.card p{color:var(--ink-2); font-size:14.5px; line-height:1.62}
+.tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; padding-top:6px}
+.tag{font-size:11.5px; font-weight:600; color:var(--ink-2); border:1px solid var(--line); background:rgba(255,255,255,.03); padding:5px 11px; border-radius:var(--r-pill)}
+.visit{display:inline-flex; align-items:center; gap:7px; color:var(--accent); font-weight:700; font-size:14px; margin-top:4px}
+.visit svg{transition:transform .3s var(--ease)}
+.card:hover .visit svg{transform:translateX(4px)}
+
+/* ============ approach ============ */
+.split{display:grid; grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr); gap:clamp(32px,5vw,72px); align-items:start}
+.sticky{position:sticky; top:110px}
+.steps{display:grid}
+.step{padding:clamp(22px,2.6vw,30px) 0; border-top:1px solid var(--line)}
+.step:first-child{border-top:0; padding-top:0}
+.step h3{font-size:clamp(19px,1.7vw,24px); letter-spacing:-.03em}
+.step p{margin-top:11px; color:var(--ink-2); font-size:15px; max-width:56ch}
+
+/* ============ stack ============ */
+.stack-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3vw,34px); margin-top:clamp(34px,5vw,52px)}
+.stack-col h3{font-family:var(--mono); font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-3); font-weight:700}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px}
+.chip{font-size:13.5px; font-weight:600; color:var(--ink); border:1px solid var(--line); background:var(--panel); padding:8px 14px; border-radius:var(--r-pill);
+  transition:border-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease)}
+.chip:hover{border-color:var(--accent-line); color:#cfe4ff; transform:translateY(-2px)}
+.selfnote{margin-top:clamp(34px,5vw,52px); padding:clamp(22px,3vw,32px); border:1px solid var(--line);
+  border-left:2px solid var(--accent); border-radius:var(--r); background:var(--panel); color:var(--ink-2); max-width:70ch}
+.selfnote b{color:var(--ink)}
+
+/* ============ contact ============ */
+.contact{border-top:1px solid var(--line); background:var(--bg-2)}
+.contact-in{padding-block:clamp(70px,10vw,130px); text-align:center; display:flex; flex-direction:column; align-items:center}
+.contact h2{max-width:20ch}
+.contact .sub{margin-inline:auto; text-align:center}
+.mail{display:inline-block; margin-top:34px; font-size:clamp(19px,3vw,34px); font-weight:800; letter-spacing:-.035em;
+  background-image:linear-gradient(var(--accent),var(--accent)); background-size:0% 1px; background-repeat:no-repeat; background-position:0 100%;
+  transition:background-size .5s var(--ease), color .3s var(--ease); padding-bottom:4px}
+.mail:hover{color:var(--accent); background-size:100% 1px}
+.social{display:flex; gap:10px; margin-top:30px; flex-wrap:wrap; justify-content:center}
+footer{border-top:1px solid var(--line); padding-block:26px 40px}
+.foot-in{display:flex; flex-wrap:wrap; gap:12px 22px; justify-content:space-between; color:var(--ink-3); font-size:13px}
+
+/* ============ motion ============ */
+.js .rise{opacity:0; transform:translateY(22px)}
+.js .rise.in{opacity:1; transform:none; transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.js .rise.d1.in{transition-delay:.07s} .js .rise.d2.in{transition-delay:.14s}
+.js .rise.d3.in{transition-delay:.21s} .js .rise.d4.in{transition-delay:.28s}
+.js .hero .rise{animation:rise .8s var(--ease) both}
+.js .hero .rise{opacity:1; transform:none}
+@keyframes rise{from{opacity:0; transform:translateY(24px)} to{opacity:1; transform:none}}
+.js .hero .r1{animation-delay:.05s} .js .hero .r2{animation-delay:.14s}
+.js .hero .r3{animation-delay:.23s} .js .hero .r4{animation-delay:.32s} .js .hero .r5{animation-delay:.4s}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important; animation-delay:0 !important; transition-duration:.001ms !important}
+  .js .rise{opacity:1 !important; transform:none !important}
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: clamp(1rem, .97rem + .18vw, 1.0625rem);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+/* ============ responsive ============ */
+@media (max-width:1000px){
+  .hero-grid{grid-template-columns:1fr}
+  .frames{min-height:0; display:grid; gap:14px; grid-template-columns:1fr 1fr}
+  .frame{position:static; width:100%; transform:none !important}
+  .split{grid-template-columns:1fr} .sticky{position:static}
+  .card.big{grid-column:span 3}
+  .stack-grid{grid-template-columns:1fr}
 }
-
-/* One soft wash behind the fold. The only decoration on the page. */
-.glow {
-  position: fixed; inset: -20% -10% auto -10%; height: 70vh; z-index: 0; pointer-events: none;
-  background: radial-gradient(60% 55% at 50% 0%, rgba(76,157,255,.11), transparent 70%);
-}
-
-.wrap { position: relative; z-index: 1; max-width: 1240px; margin-inline: auto; padding-inline: var(--pad); }
-
-a { color: var(--accent); text-underline-offset: 3px; }
-a:hover { color: #8dc2ff; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-img { display: block; max-width: 100%; height: auto; }
-
-.skip { position: absolute; left: -9999px; background: var(--accent); color: #04101d; padding: .7rem 1.1rem; font-weight: 700; border-radius: 0 0 var(--r) 0; }
-.skip:focus { left: 0; top: 0; z-index: 60; }
-
-h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -.03em; font-weight: 800; text-wrap: balance; }
-p { margin: 0; }
-
-.eyebrow {
-  font-family: var(--mono); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 1.25rem;
-}
-
-/* ---------------- Hero: asymmetric split, type-led ---------------- */
-
-.hero { padding-block: clamp(3.5rem, 9vw, 6rem) clamp(3rem, 7vw, 5rem); }
-@media (min-width: 900px) {
-  .hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: end; }
-}
-
-.avail {
-  display: inline-flex; align-items: center; gap: .6rem;
-  font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--ink-2); border: 1px solid var(--line-lift); border-radius: 999px; padding: .45rem .9rem;
-  margin-bottom: 1.75rem;
-}
-.avail i { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(76,157,255,.20); }
-
-h1 { font-size: clamp(2.4rem, 1rem + 5vw, 4.5rem); }
-h1 .g { color: var(--accent); }
-
-.hero-sub { font-size: clamp(1.05rem, 1rem + .4vw, 1.3rem); color: var(--ink-2); margin-top: 1.5rem; max-width: 46ch; }
-.hero-sub b { color: var(--ink); font-weight: 700; }
-
-.cta { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2.25rem; }
-.btn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-size: .95rem; font-weight: 600; text-decoration: none; white-space: nowrap;
-  padding: .8rem 1.4rem; border-radius: 999px; border: 1px solid var(--line-lift); color: var(--ink);
-  transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
-}
-.btn:hover { border-color: var(--accent-dim); background: var(--bg-lift); color: var(--ink); transform: translateY(-2px); }
-.btn:active { transform: translateY(0) scale(.985); }
-.btn.solid { background: var(--accent); border-color: var(--accent); color: #04101d; }
-.btn.solid:hover { background: #77b4ff; border-color: #77b4ff; color: #04101d; }
-
-/* Numbers: a compact spec block. Hairlines instead of cards, and the
-   label sits next to its number rather than across a gap from it. */
-.counts { margin-top: 2.5rem; }
-@media (min-width: 900px) { .counts { margin-top: 0; } }
-
-.stat {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(3.5rem, auto) 1fr;
-  align-items: baseline;
-  gap: 1.25rem;
-  padding: 1.15rem 0;
-  border-top: 1px solid var(--line);
-}
-.stat:last-child { border-bottom: 1px solid var(--line); }
-
-/* A short accent segment marks the top of each row. It draws in on reveal,
-   which is what gives the block its rhythm. */
-.stat::before {
-  content: "";
-  position: absolute; top: -1px; left: 0;
-  width: 1.75rem; height: 1px; background: var(--accent);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform .5s cubic-bezier(.16,1,.3,1);
-}
-.js .counts.in .stat::before { transform: scaleX(1); }
-.js .counts.in .stat:nth-child(2)::before { transition-delay: .09s; }
-.js .counts.in .stat:nth-child(3)::before { transition-delay: .18s; }
-
-.stat b {
-  font-family: var(--mono);
-  font-size: clamp(1.9rem, 1.5rem + 1.3vw, 2.7rem);
-  font-weight: 700; letter-spacing: -.05em; line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.stat span { font-size: .875rem; color: var(--ink-3); line-height: 1.5; transition: color .25s ease; }
-.stat:hover span { color: var(--ink-2); }
-
-/* ---------------- Sections ---------------- */
-
-section { padding-block: clamp(3.5rem, 9vw, 7rem); }
-.rule { border-top: 1px solid var(--line); }
-
-.h2 { font-size: clamp(1.75rem, 1.3rem + 2vw, 3rem); max-width: 20ch; }
-.lede { color: var(--ink-2); margin-top: 1.1rem; max-width: 58ch; }
-
-/* ---------------- Feature project: image plus text split ---------------- */
-
-.feature { display: grid; gap: clamp(1.5rem, 4vw, 3rem); margin-top: clamp(2.5rem, 6vw, 4rem); align-items: center; }
-@media (min-width: 900px) {
-  .feature { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
-  .feature.flip .shot { order: 2; }
-}
-
-.shot {
-  position: relative; display: block; border-radius: var(--r); overflow: hidden;
-  border: 1px solid var(--line); background: var(--bg-lift);
-  transition: border-color .3s ease;
-}
-.shot img { width: 100%; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
-.shot:hover { border-color: var(--accent-dim); }
-.shot:hover img { transform: scale(1.025); }
-
-.sector { font-family: var(--mono); font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
-.feature h3 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); margin-top: .55rem; }
-.feature h3 a { color: var(--ink); text-decoration: none; }
-.feature h3 a:hover { color: var(--accent); }
-.feature p { color: var(--ink-2); margin-top: 1rem; }
-.feature p b { color: var(--ink); font-weight: 700; }
-
-.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.4rem; padding: 0; list-style: none; }
-.tags li { font-family: var(--mono); font-size: .7rem; color: var(--ink-3); border: 1px solid var(--line); border-radius: 6px; padding: .28rem .55rem; }
-
-.go { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.4rem; font-size: .9rem; font-weight: 600; text-decoration: none; transition: gap .2s ease; }
-.go:hover { gap: .75rem; }
-
-/* ---------------- Work grid: image cards ---------------- */
-
-.grid { display: grid; gap: clamp(1.5rem, 3.5vw, 2.5rem); margin-top: clamp(3rem, 7vw, 4.5rem); grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
-
-.card { display: flex; flex-direction: column; }
-.card .shot { margin-bottom: 1.1rem; }
-.card .shot img { aspect-ratio: 12 / 5; object-fit: cover; object-position: center top; }
-.card h3 { font-size: 1.15rem; margin-top: .45rem; }
-.card h3 a { color: var(--ink); text-decoration: none; }
-.card:hover h3 a { color: var(--accent); }
-.card p { color: var(--ink-2); font-size: .925rem; margin-top: .6rem; }
-.card .tags { margin-top: auto; padding-top: 1.1rem; }
-
-/* ---------------- Approach: hairline two-column ---------------- */
-
-.method { margin-top: clamp(2rem, 5vw, 3rem); border-top: 1px solid var(--line); }
-.method > div { padding: clamp(1.4rem, 3vw, 2rem) 0; border-bottom: 1px solid var(--line); }
-@media (min-width: 800px) {
-  .method > div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
-}
-.method h3 { font-size: clamp(1.15rem, 1rem + .5vw, 1.4rem); }
-.method p { color: var(--ink-2); margin-top: .6rem; }
-@media (min-width: 800px) { .method p { margin-top: 0; } }
-
-/* ---------------- Stack: dense inline type, no boxes ---------------- */
-
-.stack { margin-top: clamp(2rem, 5vw, 3rem); display: grid; gap: 2rem; }
-@media (min-width: 720px) { .stack { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: clamp(2rem, 5vw, 4rem); } }
-.stack h3 { font-family: var(--mono); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; margin-bottom: .9rem; }
-.stack p { color: var(--ink); font-size: 1.05rem; line-height: 1.95; }
-.stack p span { color: var(--ink-3); }
-
-/* ---------------- Contact ---------------- */
-
-.close { font-size: clamp(2rem, 1.3rem + 3.2vw, 4rem); max-width: 17ch; }
-.close em { font-style: normal; color: var(--accent); }
-
-footer { border-top: 1px solid var(--line); padding-block: 2rem 3.5rem; font-family: var(--mono); font-size: .72rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: .6rem 2rem; justify-content: space-between; }
-
-/* ---------------- Motion ----------------
-   Additive only. Nothing on this page is hidden by default: the hidden
-   state lives inside the keyframes, never in a base rule. If the script
-   fails, if the observer never fires, if the tab is backgrounded and
-   animations are throttled, the page still reads in full. */
-
-@keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
-
-.js .rv.in            { animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
-.js .stagger.in > *   { animation: rise .6s cubic-bezier(.16,1,.3,1) both; }
-
-/* Sequence, so a group arrives as a group instead of all at once. */
-.js .stagger.in > *:nth-child(1) { animation-delay: 0s;    }
-.js .stagger.in > *:nth-child(2) { animation-delay: .07s;  }
-.js .stagger.in > *:nth-child(3) { animation-delay: .14s;  }
-.js .stagger.in > *:nth-child(4) { animation-delay: .21s;  }
-.js .stagger.in > *:nth-child(5) { animation-delay: .28s;  }
-.js .stagger.in > *:nth-child(6) { animation-delay: .35s;  }
-
-/* Feature blocks: image and text land a beat apart. */
-.js .feature.in > *:nth-child(2) { animation: rise .6s cubic-bezier(.16,1,.3,1) .1s both; }
-
-/* ---------------- Small screens ----------------
-   The layout already collapses through clamp() and auto-fill. These are the
-   places where a straight collapse is not enough. */
-
-@media (max-width: 640px) {
-  body { font-size: 1rem; }
-  section { padding-block: 3rem; }
-
-  /* Let the headline wrap naturally rather than keeping a desktop line break
-     that makes three short lines on a phone. The space before the <br> in the
-     markup is what keeps the words apart once the break is switched off. */
-  h1 { font-size: clamp(2.1rem, 8.5vw, 2.9rem); }
-  h1 br { display: none; }
-
-  .hero { padding-block: 2.5rem 2.5rem; }
-  .hero-sub { font-size: 1.02rem; }
-
-  /* Full width taps, comfortably above the 44px target. */
-  .cta { gap: .6rem; }
-  .btn { flex: 1 1 auto; justify-content: center; padding: .85rem 1.1rem; }
-
-  .stat { grid-template-columns: minmax(2.75rem, auto) 1fr; gap: .9rem; padding: .95rem 0; }
-  .stat b { font-size: 2rem; }
-  .stat span { font-size: .82rem; }
-
-  .feature { gap: 1.25rem; margin-top: 2rem; }
-  .grid { gap: 2rem; }
-  .tags li { font-size: .68rem; }
-
-  footer { padding-block: 1.5rem 2.5rem; }
-}
-
-/* Between phone and laptop the work grid reads better as one column than as
-   two cramped ones. */
-@media (min-width: 641px) and (max-width: 860px) {
-  .grid { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+@media (max-width:760px){
+  .nav-links{display:none}
+  .nav-in{height:58px; padding-right:6px}
+  .nav .btn{margin-left:auto; height:42px; padding:0 6px 0 16px; font-size:13.5px}
+  .nav .btn i{width:28px; height:28px}
+  .brand small{display:none}
+  .bento{grid-template-columns:1fr}
+  .card,.card.big{grid-column:span 1}
+  .stats-in{grid-template-columns:1fr; gap:20px}
+  .stat b{font-size:34px}
+  .frames{grid-template-columns:1fr}
+  .frame:nth-child(2){display:none}
+  .cta .btn{flex:1 1 auto; justify-content:center}
 }
 </style>
 </head>
-
 <body>
 <a class="skip" href="#work">Skip to the work</a>
 <div class="glow" aria-hidden="true"></div>
+<div class="page">
 
-<div class="wrap">
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="mark">H</span><span>Hassan Raza<small>Design and build</small></span></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a><a href="#approach">Approach</a><a href="#stack">Stack</a>
+    </nav>
+    <a class="btn btn-primary" href="#contact">Get in touch <i aria-hidden="true">&rarr;</i></a>
+  </div>
+</header>
 
-  <header class="hero">
-    <div class="stagger">
-      <div class="avail"><i aria-hidden="true"></i> Available for remote work</div>
-      <h1>I design the site, <br>then I <span class="g">build it.</span></h1>
-      <p class="hero-sub">
-        <b>Hassan Raza</b>, web designer and developer in Lahore, working worldwide.
-        Figma layout to live WordPress build, on my own, end to end.
-      </p>
-      <div class="cta">
-        <a class="btn solid" href="#work">See the work</a>
-        <a class="btn" href="mailto:hassanraza77450@gmail.com">Email me</a>
-        <a class="btn" href="https://www.linkedin.com/in/hassanrazawebdesigner/" rel="noopener">LinkedIn</a>
+<main id="top">
+
+<section class="hero wrap">
+  <div class="hero-grid">
+    <div>
+      <span class="pill rise r1"><span class="dot" aria-hidden="true"></span> Available for remote work</span>
+      <h1 class="rise r2">I design the site,<span class="em">then I build it.</span></h1>
+      <p class="lede rise r3">Web designer and developer in Lahore, working worldwide. Figma layout to live WordPress build, on my own, end to end.</p>
+      <div class="cta rise r4">
+        <a class="btn btn-primary" href="#work">See the work <i aria-hidden="true">&rarr;</i></a>
+        <a class="btn btn-ghost" href="mailto:hassanraza77450@gmail.com">Email me</a>
       </div>
     </div>
-
-    <div class="counts rv">
-      <div class="stat"><b data-count="8">8</b><span>production sites, designed and built</span></div>
-      <div class="stat"><b data-count="26">26</b><span>client-side calculators across two platforms</span></div>
-      <div class="stat"><b data-count="2" data-suffix="+">2+</b><span>years doing design and build together</span></div>
+    <div class="frames rise r5">
+      <div class="frame f1">
+        <div class="bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <picture>
+          <source srcset="img/cryptoclippers.webp" type="image/webp">
+          <img src="img/cryptoclippers.jpg" width="628" height="265" fetchpriority="high" decoding="async"
+               alt="Crypto Clippers homepage with platform icons set inside the headline over a dark green hero.">
+        </picture>
+      </div>
+      <div class="frame f2">
+        <div class="bar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <picture>
+          <source srcset="img/electricalcalcs.webp" type="image/webp">
+          <img src="img/electricalcalcs.jpg" width="628" height="265" decoding="async"
+               alt="ElectriCalcs homepage with a live voltage drop chart reading 19 feet and 0.3 percent.">
+        </picture>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="work">
+<section class="stats" aria-label="At a glance">
+  <div class="wrap stats-in">
+    <div class="stat rise"><b data-to="8">8</b><span>production sites, designed and built</span></div>
+    <div class="stat rise d1"><b data-to="26">26</b><span>client-side calculators across two platforms</span></div>
+    <div class="stat rise d2"><b data-to="2" data-suffix="+">2+</b><span>years doing design and build together</span></div>
+  </div>
+</section>
 
-    <section class="rule">
-      <p class="eyebrow rv">Selected work</p>
-      <h2 class="h2 rv">Every site below is live, and I designed and built all of it.</h2>
-      <p class="lede rv">
-        No mockups, no team credits to untangle. Layout in Figma, build in WordPress with hand written
-        scoped CSS, and real code wherever the page builder could not do the job.
-      </p>
+<section class="sec wrap" id="work">
+  <p class="eyebrow rise">Selected work</p>
+  <h2 class="rise d1">Every site below is live, and I built all of it.</h2>
+  <p class="sub rise d2">No mockups and no team credits to untangle. Layout in Figma, build in WordPress with hand written scoped CSS, and real code wherever the page builder could not do the job.</p>
 
-      <article class="feature rv">
-        <a class="shot" href="https://cryptoclippers.com/" rel="noopener" aria-label="Visit Crypto Clippers">
-          <picture>
-            <source type="image/webp" srcset="img/cryptoclippers-640.webp 640w, img/cryptoclippers.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/cryptoclippers.jpg" width="1200" height="506" alt="Crypto Clippers homepage with platform icons set inside the headline over a dark green hero." fetchpriority="high">
-          </picture>
-        </a>
-        <div>
-          <p class="sector">Crypto &nbsp;/&nbsp; cryptoclippers.com</p>
-          <h3><a href="https://cryptoclippers.com/" rel="noopener">Crypto Clippers</a></h3>
-          <p>
-            One long page would have buried every vertical under the same pitch. <b>I built a siloed page
-            matrix instead</b>: six vertical pages for token launch, DeFi and the rest, five platform pages
-            for TikTok, Reels, Shorts, X and Kick, each with its own case study and FAQ modules, all
-            routing into a single booking funnel. Adding a new vertical means adding a page, not
-            rewriting the site.
-          </p>
-          <ul class="tags"><li>Information architecture</li><li>Component reuse</li><li>Scoped CSS</li><li>Booking funnel</li><li>Figma</li></ul>
-          <a class="go" href="https://cryptoclippers.com/" rel="noopener">Visit the site &rsaquo;</a>
-        </div>
-      </article>
-
-      <article class="feature flip rv">
-        <a class="shot" href="https://musicclippingagency.com/" rel="noopener" aria-label="Visit Music Clipping Agency">
-          <picture>
-            <source type="image/webp" srcset="img/music-640.webp 640w, img/music.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/music.jpg" width="1200" height="506" alt="Music Clipping Agency homepage with green audio artwork behind large display type." loading="lazy">
-          </picture>
-        </a>
-        <div>
-          <p class="sector">Music &nbsp;/&nbsp; musicclippingagency.com</p>
-          <h3><a href="https://musicclippingagency.com/" rel="noopener">Music Clipping Agency</a></h3>
-          <p>
-            The most build heavy site of the set. <b>Animated data blocks, a campaign results bubble chart
-            and a clip cohort diagram</b>, plus a three way comparison table, FAQ accordion and booking
-            funnel. The hard part was not drawing them, it was keeping every one of them readable from
-            wide desktop down to a small phone, which is where most builder charts fall apart.
-          </p>
-          <ul class="tags"><li>Data visuals</li><li>Scroll animation</li><li>Responsive charts</li><li>Elementor</li><li>Scoped CSS</li></ul>
-          <a class="go" href="https://musicclippingagency.com/" rel="noopener">Visit the site &rsaquo;</a>
-        </div>
-      </article>
-
-      <div class="grid stagger">
-
-        <article class="card">
-          <a class="shot" href="https://casinougc.com/" rel="noopener" aria-label="Visit Casino UGC">
-            <picture>
-            <source type="image/webp" srcset="img/casinougc-640.webp 640w, img/casinougc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/casinougc.jpg" width="1200" height="506" alt="Casino UGC homepage reading Guaranteed Views For Casino and iGaming Brands." loading="lazy">
-          </picture>
-          </a>
-          <p class="sector">casinougc.com</p>
-          <h3><a href="https://casinougc.com/" rel="noopener">Casino UGC</a></h3>
-          <p>The homepage needed a layout Elementor could not produce, so I wrote a custom WordPress plugin for that front end instead of bending the design to fit the tool.</p>
-          <ul class="tags"><li>Custom WP plugin</li><li>PHP</li><li>Comparison table</li></ul>
-        </article>
-
-        <article class="card">
-          <a class="shot" href="https://electricalcalcs.online/" rel="noopener" aria-label="Visit ElectriCalcs">
-            <picture>
-            <source type="image/webp" srcset="img/electricalcalcs-640.webp 640w, img/electricalcalcs.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/electricalcalcs.jpg" width="1200" height="506" alt="ElectriCalcs homepage with a live voltage drop chart reading 19 feet and 0.3 percent." loading="lazy">
-          </picture>
-          </a>
-          <p class="sector">electricalcalcs.online</p>
-          <h3><a href="https://electricalcalcs.online/" rel="noopener">ElectriCalcs</a></h3>
-          <p>Eleven NEC referenced calculators. Every result shows the formula it used and cites the article behind it, because an electrician has to defend the number to an inspector.</p>
-          <ul class="tags"><li>JavaScript</li><li>Client-side maths</li><li>Live chart</li></ul>
-        </article>
-
-        <article class="card">
-          <a class="shot" href="https://casinoclippingagency.com/" rel="noopener" aria-label="Visit Casino Clipping Agency">
-            <picture>
-            <source type="image/webp" srcset="img/casinoclipping-640.webp 640w, img/casinoclipping.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/casinoclipping.jpg" width="1200" height="507" alt="Casino Clipping Agency homepage with gold chips and a green gradient hero." loading="lazy">
-          </picture>
-          </a>
-          <p class="sector">casinoclippingagency.com</p>
-          <h3><a href="https://casinoclippingagency.com/" rel="noopener">Casino Clipping Agency</a></h3>
-          <p>Live metrics block, comparison pages and one booking funnel, built inside iGaming compliance limits where what the copy may claim shapes the layout as much as the design does.</p>
-          <ul class="tags"><li>Conversion modules</li><li>Compliance constraints</li><li>Scoped CSS</li></ul>
-        </article>
-
-        <article class="card">
-          <a class="shot" href="https://buildcalcpro.online/" rel="noopener" aria-label="Visit BuildCalc Pro">
-            <picture>
-            <source type="image/webp" srcset="img/buildcalc-640.webp 640w, img/buildcalc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/buildcalc.jpg" width="1200" height="322" alt="BuildCalc Pro with a worked example chip and category pills for concrete, gravel, mulch and tile." loading="lazy">
-          </picture>
-          </a>
-          <p class="sector">buildcalcpro.online</p>
-          <h3><a href="https://buildcalcpro.online/" rel="noopener">BuildCalc Pro</a></h3>
-          <p>Fifteen material calculators. Waste factor and regional rates are inputs you can see and change, not constants buried in the code, so the estimate can be argued with.</p>
-          <ul class="tags"><li>JavaScript</li><li>Unit conversion</li><li>WordPress</li></ul>
-        </article>
-
-        <article class="card">
-          <a class="shot" href="https://cryptougc.co/" rel="noopener" aria-label="Visit Crypto UGC">
-            <picture>
-            <source type="image/webp" srcset="img/cryptougc-640.webp 640w, img/cryptougc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/cryptougc.jpg" width="1200" height="507" alt="Crypto UGC homepage with a green and white split headline over a dark starfield." loading="lazy">
-          </picture>
-          </a>
-          <p class="sector">cryptougc.co</p>
-          <h3><a href="https://cryptougc.co/" rel="noopener">Crypto UGC</a></h3>
-          <p>A custom classed hero built on hand written CSS inside Elementor, so the section behaves like code rather than a stack of builder widgets.</p>
-          <ul class="tags"><li>Hand-written CSS</li><li>Elementor</li><li>Carousels</li></ul>
-        </article>
-
-        <article class="card">
-          <a class="shot" href="https://ecomugc.co/" rel="noopener" aria-label="Visit Ecom UGC">
-            <picture>
-            <source type="image/webp" srcset="img/ecomugc-640.webp 640w, img/ecomugc.webp 1200w" sizes="(max-width: 900px) 92vw, 46vw">
-            <img decoding="async" src="img/ecomugc.jpg" width="1200" height="506" alt="Ecommerce UGC Agency homepage with a rating chip and two call to action buttons." loading="lazy">
-          </picture>
-          </a>
-          <p class="sector">ecomugc.co</p>
-          <h3><a href="https://ecomugc.co/" rel="noopener">Ecom UGC</a></h3>
-          <p>Client logo bar, ratings block and a dual conversion path: a booking widget for people ready to talk, a contact form for people who are not there yet.</p>
-          <ul class="tags"><li>Lead capture</li><li>Social proof</li><li>Figma</li></ul>
-        </article>
-
+  <div class="bento">
+    <article class="card big rise">
+      <div class="shot"><picture><source srcset="img/cryptoclippers.webp" type="image/webp"><img src="img/cryptoclippers.jpg" width="628" height="265" loading="lazy" decoding="async" alt="Crypto Clippers homepage with platform icons set inside the headline over a dark green hero."></picture></div>
+      <div class="card-body">
+        <p class="kicker">Crypto / cryptoclippers.com</p>
+        <h3>Crypto Clippers</h3>
+        <p>One long page would have buried every vertical under the same pitch. I built a siloed page matrix instead: six vertical pages, five platform pages, each with its own case study and FAQ, all routing into a single booking funnel. Adding a vertical means adding a page, not rewriting the site.</p>
+        <div class="tags"><span class="tag">Information architecture</span><span class="tag">Component reuse</span><span class="tag">Scoped CSS</span><span class="tag">Figma</span></div>
+        <a class="visit" href="https://cryptoclippers.com" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </div>
-    </section>
+    </article>
 
-    <section class="rule">
-      <h2 class="h2 rv">The same four decisions on every project.</h2>
-
-      <div class="method stagger">
-        <div>
-          <h3>Design it before building it</h3>
-          <p>Layout goes into Figma first, at real breakpoints. What goes live is what was designed, not whatever the page builder happened to allow on the day.</p>
-        </div>
-        <div>
-          <h3>Write the CSS by hand, scoped</h3>
-          <p>Sections get their own classes and their own scoped rules instead of stock builder blocks. The markup stays predictable and nothing turns into an important war with builder styles.</p>
-        </div>
-        <div>
-          <h3>Drop to real code where the builder stops</h3>
-          <p>A page builder handles about 90 percent of a homepage well. For the last 10 percent I write the plugin or the front end myself, rather than changing the design to fit the tool.</p>
-        </div>
-        <div>
-          <h3>Build components once, reuse them</h3>
-          <p>Booking funnel, comparison table, carousels, FAQ accordion and lead forms are one component system re-skinned across six verticals. New sites take days instead of weeks.</p>
-        </div>
+    <article class="card big rise d1">
+      <div class="shot"><picture><source srcset="img/music.webp" type="image/webp"><img src="img/music.jpg" width="628" height="265" loading="lazy" decoding="async" alt="Music Clipping Agency homepage with green audio artwork behind large display type."></picture></div>
+      <div class="card-body">
+        <p class="kicker">Music / musicclippingagency.com</p>
+        <h3>Music Clipping Agency</h3>
+        <p>The most build heavy site of the set. Animated data blocks, a campaign results bubble chart and a clip cohort diagram, plus a three way comparison table and booking funnel. The hard part was not drawing them, it was keeping every one readable from wide desktop down to a small phone.</p>
+        <div class="tags"><span class="tag">Data visuals</span><span class="tag">Scroll animation</span><span class="tag">Responsive charts</span><span class="tag">Elementor</span></div>
+        <a class="visit" href="https://musicclippingagency.com" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </div>
-    </section>
+    </article>
 
-    <section class="rule">
-      <h2 class="h2 rv">What I actually work in.</h2>
-
-      <div class="stack stagger">
-        <div>
-          <h3>Design</h3>
-          <p>Figma <span>/</span> Wireframing <span>/</span> Landing page design <span>/</span> Component systems <span>/</span> UI design</p>
-        </div>
-        <div>
-          <h3>Build</h3>
-          <p>HTML5 <span>/</span> CSS3 <span>/</span> JavaScript <span>/</span> WordPress <span>/</span> Elementor <span>/</span> Custom WP plugins <span>/</span> WooCommerce</p>
-        </div>
-        <div>
-          <h3>Quality</h3>
-          <p>Responsive layout <span>/</span> Cross-browser testing <span>/</span> Page-speed work <span>/</span> Accessibility basics</p>
-        </div>
+    <article class="card rise">
+      <div class="shot"><picture><source srcset="img/casinougc.webp" type="image/webp"><img src="img/casinougc.jpg" width="628" height="265" loading="lazy" decoding="async" alt="Casino UGC homepage reading Guaranteed Views For Casino and iGaming Brands."></picture></div>
+      <div class="card-body">
+        <p class="kicker">casinougc.com</p>
+        <h3>Casino UGC</h3>
+        <p>The homepage needed a layout Elementor could not produce, so I wrote a custom WordPress plugin for that front end instead of bending the design to fit the tool.</p>
+        <div class="tags"><span class="tag">Custom WP plugin</span><span class="tag">PHP</span><span class="tag">Comparison table</span></div>
+        <a class="visit" href="https://casinougc.com" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </div>
+    </article>
 
-      <p class="lede" style="margin-top:2.5rem">
-        This page is part of the answer too. One HTML file, no framework, no web fonts, no build step.
-        <a href="https://github.com/hassanrazawebdev/hassanrazawebdev.github.io" rel="noopener">Read the source</a>.
-      </p>
-    </section>
-
-    <section class="rule">
-      <p class="eyebrow rv">Contact</p>
-      <h2 class="close rv">Got a design that needs <em>building properly</em>?</h2>
-      <p class="lede rv">
-        Open to remote roles and freelance projects. If you have a WordPress site that fights you every
-        time you change it, send that over too.
-      </p>
-      <div class="cta">
-        <a class="btn solid" href="mailto:hassanraza77450@gmail.com">hassanraza77450@gmail.com</a>
-        <a class="btn" href="https://www.linkedin.com/in/hassanrazawebdesigner/" rel="noopener">LinkedIn</a>
-        <a class="btn" href="https://github.com/hassanrazawebdev" rel="noopener">GitHub</a>
+    <article class="card rise d1">
+      <div class="shot"><picture><source srcset="img/electricalcalcs.webp" type="image/webp"><img src="img/electricalcalcs.jpg" width="628" height="265" loading="lazy" decoding="async" alt="ElectriCalcs homepage with a live voltage drop chart reading 19 feet and 0.3 percent."></picture></div>
+      <div class="card-body">
+        <p class="kicker">electricalcalcs.online</p>
+        <h3>ElectriCalcs</h3>
+        <p>Eleven NEC referenced calculators. Every result shows the formula it used and cites the article behind it, because an electrician has to defend the number to an inspector.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Client-side maths</span><span class="tag">Input validation</span></div>
+        <a class="visit" href="https://electricalcalcs.online" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </div>
-    </section>
+    </article>
 
-  </main>
+    <article class="card rise d2">
+      <div class="shot"><picture><source srcset="img/casinoclipping.webp" type="image/webp"><img src="img/casinoclipping.jpg" width="628" height="265" loading="lazy" decoding="async" alt="Casino Clipping Agency homepage with gold chips and a green gradient hero."></picture></div>
+      <div class="card-body">
+        <p class="kicker">casinoclippingagency.com</p>
+        <h3>Casino Clipping Agency</h3>
+        <p>iGaming, where compliance shapes the layout as much as the design does. Vertical and platform page matrix, live metrics block and a single booking funnel.</p>
+        <div class="tags"><span class="tag">Conversion modules</span><span class="tag">Compliance constraints</span><span class="tag">Scoped CSS</span></div>
+        <a class="visit" href="https://casinoclippingagency.com" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
 
-  <footer>
-    <span>Hassan Raza &nbsp;/&nbsp; Web Designer and Developer &nbsp;/&nbsp; Lahore, working worldwide</span>
+    <article class="card rise">
+      <div class="shot"><picture><source srcset="img/buildcalc.webp" type="image/webp"><img src="img/buildcalc.jpg" width="628" height="265" loading="lazy" decoding="async" alt="BuildCalc Pro with a worked example chip and category pills for concrete, gravel, mulch and tile."></picture></div>
+      <div class="card-body">
+        <p class="kicker">buildcalcpro.online</p>
+        <h3>BuildCalc Pro</h3>
+        <p>Fifteen material calculators. Waste factor and regional rates are inputs you can see and change, not constants buried in the code, so the estimate can be argued with.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Unit conversion</span><span class="tag">WordPress</span></div>
+        <a class="visit" href="https://buildcalcpro.online" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card rise d1">
+      <div class="shot"><picture><source srcset="img/cryptougc.webp" type="image/webp"><img src="img/cryptougc.jpg" width="628" height="265" loading="lazy" decoding="async" alt="Crypto UGC homepage with a green and white split headline over a dark starfield."></picture></div>
+      <div class="card-body">
+        <p class="kicker">cryptougc.co</p>
+        <h3>Crypto UGC</h3>
+        <p>A custom classed hero built on hand written CSS inside Elementor, so the section behaves like code rather than a stack of builder widgets.</p>
+        <div class="tags"><span class="tag">Hand-written CSS</span><span class="tag">Elementor</span><span class="tag">Carousels</span></div>
+        <a class="visit" href="https://cryptougc.co" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+
+    <article class="card rise d2">
+      <div class="shot"><picture><source srcset="img/ecomugc.webp" type="image/webp"><img src="img/ecomugc.jpg" width="628" height="265" loading="lazy" decoding="async" alt="Ecommerce UGC Agency homepage with a rating chip and two call to action buttons."></picture></div>
+      <div class="card-body">
+        <p class="kicker">ecomugc.co</p>
+        <h3>Ecom UGC</h3>
+        <p>Client logo bar, ratings block and a dual conversion path: a booking widget for people ready to talk, a contact form for people who are not there yet.</p>
+        <div class="tags"><span class="tag">Lead capture</span><span class="tag">Social proof</span><span class="tag">Figma</span></div>
+        <a class="visit" href="https://ecomugc.co" target="_blank" rel="noopener">Visit the site <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec wrap" id="approach">
+  <div class="split">
+    <div class="sticky">
+      <h2 class="rise">The same four decisions on every project.</h2>
+      <p class="sub rise d1">They are why the sites stay fast and why a change request takes an hour instead of a day.</p>
+    </div>
+    <div class="steps">
+      <div class="step rise">
+        <h3>Design it before building it</h3>
+        <p>Layout goes into Figma first, at real breakpoints. What goes live is what was designed, not whatever the page builder happened to allow on the day.</p>
+      </div>
+      <div class="step rise d1">
+        <h3>Write the CSS by hand, scoped</h3>
+        <p>Sections get their own classes and their own rules. The markup stays predictable and nothing turns into a specificity war with builder styles.</p>
+      </div>
+      <div class="step rise d2">
+        <h3>Drop to real code where the builder stops</h3>
+        <p>A page builder handles about 90 percent of a homepage well. For the last 10 percent I write the plugin or the front end myself, rather than changing the design to fit the tool.</p>
+      </div>
+      <div class="step rise d3">
+        <h3>Build components once, reuse them</h3>
+        <p>Booking funnel, comparison table, carousels, FAQ accordion and lead forms are one component system re-skinned across six verticals. New sites take days instead of weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="stack">
+  <h2 class="rise">What I actually work in.</h2>
+  <div class="stack-grid">
+    <div class="stack-col rise">
+      <h3>Design</h3>
+      <div class="chips"><span class="chip">Figma</span><span class="chip">Wireframing</span><span class="chip">Landing page design</span><span class="chip">Component systems</span><span class="chip">UI design</span></div>
+    </div>
+    <div class="stack-col rise d1">
+      <h3>Build</h3>
+      <div class="chips"><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">JavaScript</span><span class="chip">WordPress</span><span class="chip">Elementor</span><span class="chip">Custom WP plugins</span><span class="chip">WooCommerce</span></div>
+    </div>
+    <div class="stack-col rise d2">
+      <h3>Quality</h3>
+      <div class="chips"><span class="chip">Responsive layout</span><span class="chip">Cross-browser testing</span><span class="chip">Core Web Vitals</span><span class="chip">On-page SEO</span><span class="chip">Accessibility basics</span></div>
+    </div>
+  </div>
+  <p class="selfnote rise d3"><b>This page is part of the answer too.</b> One HTML file, no framework, no web fonts, no build step, no third party requests. Every image is served as WebP with a JPEG fallback and reserved space so nothing shifts while it loads. Read the source.</p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-in">
+    <h2 class="rise">Got a design that needs building properly?</h2>
+    <p class="sub rise d1">Open to remote roles and freelance projects. If you have a WordPress site that fights you every time you change it, send that over too.</p>
+    <a class="mail rise d2" href="mailto:hassanraza77450@gmail.com">hassanraza77450@gmail.com</a>
+    <div class="social rise d3">
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/hassanrazawebdesigner/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/hassanrazawebdev" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <span>Hassan Raza, web designer and developer, Lahore, working worldwide</span>
     <span>Built by hand</span>
-  </footer>
-
+  </div>
+</footer>
 </div>
 
 <script>
-// The reveal is added on top of visible content, never used to hide it.
-(function () {
-  if (!('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.documentElement.classList.add('js');
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // Counts up to the real figure. The correct number is already in the HTML,
-  // so nothing depends on this running.
-  function countUp(el) {
-    var end = parseInt(el.dataset.count, 10);
-    if (isNaN(end)) return;
-    var suffix = el.dataset.suffix || '', dur = 750, t0 = null;
-    (function step(t) {
-      if (t0 === null) t0 = t;
-      var p = Math.min((t - t0) / dur, 1);
-      el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + (p === 1 ? suffix : '');
-      if (p < 1) requestAnimationFrame(step);
-    })(performance.now());
+  /* reveal on scroll, IntersectionObserver only, no scroll listeners */
+  var rise = document.querySelectorAll('.rise');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i=0;i<rise.length;i++) rise[i].classList.add('in');
+  } else {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:.12});
+    for (var j=0;j<rise.length;j++) io.observe(rise[j]);
   }
 
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      e.target.classList.add('in');
-      e.target.querySelectorAll('[data-count]').forEach(countUp);
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.04 });
+  /* nav state, sentinel instead of a scroll handler */
+  var nav = document.getElementById('nav');
+  var sentinel = document.createElement('div');
+  sentinel.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;';
+  document.body.prepend(sentinel);
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(e){
+      nav.classList.toggle('stuck', !e[0].isIntersecting);
+    }).observe(sentinel);
+  }
 
-  document.querySelectorAll('.rv, .stagger').forEach(function (el) { io.observe(el); });
+  /* count up, runs once, capped duration, rAF only */
+  var nums = document.querySelectorAll('[data-to]');
+  function run(el){
+    var to = parseInt(el.getAttribute('data-to'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (reduce) { el.textContent = to + suffix; return; }
+    var t0 = null, dur = 1100;
+    function tick(t){
+      if (t0 === null) t0 = t;
+      var p = Math.min((t - t0) / dur, 1);
+      p = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * p) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window) {
+    var nio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ run(e.target); nio.unobserve(e.target); } });
+    }, {threshold:.6});
+    for (var k=0;k<nums.length;k++) nio.observe(nums[k]);
+  }
 })();
 </script>
-
 </body>
 </html>
